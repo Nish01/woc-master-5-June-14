@@ -1,0 +1,63 @@
+@(features: List[String])
+
+@import helper._
+
+@main(title = "Web Ontology Viewer") {
+    
+    <h1 id="container">Query Ontology:</h1>
+      
+      
+      @form(action = routes.Application.getResults, args = 'id -> "carform") {  
+      
+		<select id="cars" name="cars" multiple="multiple" size="50">
+
+		@for(index <- 0 until features.size()){
+		    
+	<option value="@features(index)" name="selected">@features(index)</option>
+		
+		}
+		
+      
+      <p class="buttons">
+         
+             <input type="submit" onclick="myFunction()">
+        <p>
+      
+      }
+      
+    	 
+
+
+<script>
+
+function myFunction()
+{
+
+ //console.log("your message here");
+
+ var InvForm = document.forms.carform;
+     var arr = new Array();
+    
+     var x = 0;
+    
+     for (x=0;x<InvForm.cars.length;x++)
+         {
+            if(InvForm.cars[x].selected)
+            {
+         
+             arr.push(InvForm.cars[x].value);
+    	
+            }
+         }
+   //alert(arr);
+   
+
+
+}
+
+</script>
+      
+         
+   
+
+}
